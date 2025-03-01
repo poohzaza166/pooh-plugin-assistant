@@ -4,7 +4,7 @@ from google import genai
 from google.genai import types
 
 sys_instruct="You are a Naturnal Language OS API. Your job is to parse and understand the user instruction or call a function."
-client = genai.Client(api_key="AIzaSyC6ERKaP-TJSkOQQI1gA5nHFjqys8Ho2FA")
+client = genai.Client(api_key="no")
 model_config = types.GenerateContentConfig(system_instruction=sys_instruct,
                                            temperature=0.02,
                                            top_p=1,
