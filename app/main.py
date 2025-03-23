@@ -1,21 +1,27 @@
 import asyncio
 from typing import Optional
 
+import uvicorn
+from fastapi import FastAPI
+
+from .history import register_history_thing
 from .model import Command
 from .parser import UnifiedCommandParser
 from .plugins import PluginManager
 
+app = FastAPI(debug=True)
 
 async def main():
     parser = UnifiedCommandParser()
     plugin_manager = PluginManager("plugins", parser=parser)
     plugin_manager.load_plugins()
-
+    test = register_history_thing(plugin_manager.message_bus)
     plugin_manager.message_bus.publish("example_event", "Hello from main program!")
-    
-    print(plugin_manager.parser.commands)
+    await plugin_manager.run_plugins()
 
-    plugin_manager.message_bus.publish("text_input", "whats the current time?")
+    # print(plugin_manager.parser.commands)
+
+    # plugin_manager.message_bus.publish("text_input", "whats the current time?")
     # plugin_manager.parser.parse_input()
     
     try:
@@ -27,8 +33,6 @@ async def main():
     # Trigger an event from a plugin
     plugin_manager.message_bus.trigger_event("custom_event", "Some data")
     
-    await plugin_manager.run_plugins()
-
 if __name__ == "__main__":
     asyncio.run(main())
    

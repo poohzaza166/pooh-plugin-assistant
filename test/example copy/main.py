@@ -45,7 +45,7 @@ class ExamplePlugin(PluginBase):
         print("Example plugin is running")
         while True:
             await asyncio.sleep(2)
-            print("Example plugin still active")
+            # print("Example plugin still active")
 
     @register_command(example_phrase = ["whats the current time"])
     def get_current_time(self):

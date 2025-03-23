@@ -3,6 +3,8 @@ from datetime import datetime, timedelta
 from pprint import pprint
 from typing import Any, Callable, Dict, List, Optional, Union
 
+# class Message:
+    
 
 class Command:
     def __init__(self, 

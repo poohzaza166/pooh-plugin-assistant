@@ -24,11 +24,14 @@ class MessageBus:
 
     def provide_data(self, data_name: str):
         def decorator(func: Callable):
+            if self.data_providers.get(data_name) != None:
+                raise Exception("data source is aleardy existed")
             self.data_providers[data_name] = func
             return func
         return decorator
 
     def get_data(self, data_name: str, *args, **kwargs) -> Any:
+        # print(self.data_providers)
         if data_name in self.data_providers:
             return self.data_providers[data_name](*args, **kwargs)
         else:

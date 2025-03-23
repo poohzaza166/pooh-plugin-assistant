@@ -6,17 +6,27 @@ import sys
 import threading
 from concurrent.futures import ThreadPoolExecutor
 
+from fastapi import FastAPI
+
 from .message_bus import MessageBus
 from .parser import UnifiedCommandParser
 
 
 class PluginManager:
+
     def __init__(self, plugin_folder: str, parser: UnifiedCommandParser):
         self.plugin_folder = plugin_folder
         self.plugins = {}
         self.message_bus = MessageBus()
-        self.executor = ThreadPoolExecutor(max_workers=10)
+        
         self.parser = parser
+        # self.api = api
+        self.executor = ThreadPoolExecutor(max_workers=10)
+
+    @staticmethod
+    def get_bus():
+        # if isinstance(cls.message_bus, MessageBus):
+        return PluginManager.message_bus
 
     def load_plugins(self):
         for item in os.listdir(self.plugin_folder):
