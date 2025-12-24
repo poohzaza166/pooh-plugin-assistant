@@ -1,4 +1,5 @@
 __pycache__
 models
 whisper.cpp
-vosk-model-small-en-us-0.15
+vosk-model-small-en-us-0.1
+testing
