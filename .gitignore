@@ -1,0 +1,4 @@
+__pycache__
+models
+whisper.cpp
+vosk-model-small-en-us-0.15
