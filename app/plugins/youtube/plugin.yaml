@@ -1,0 +1,14 @@
+name: play
+version: 1.0.0
+description: Time and date information plugin
+author: Your Name
+
+module: play_audio
+class: PlaybackManager
+
+enabled: true
+
+# config:
+#   timezone: "America/Los_Angeles"
+#   announce_hourly: false
+#   format_24h: false

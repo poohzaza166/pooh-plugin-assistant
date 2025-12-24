@@ -1,0 +1,10 @@
+name: joke
+version: 1.0.0
+description: Joke Creation plugin
+author: pooh
+
+module: joke
+class: Joker
+
+enable: true
+

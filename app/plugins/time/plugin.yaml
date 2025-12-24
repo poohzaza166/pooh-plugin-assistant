@@ -1,0 +1,14 @@
+name: time
+version: 1.0.0
+description: Time and date information plugin
+author: Your Name
+
+module: time_handler
+class: TimePlugin
+
+enabled: true
+
+config:
+  timezone: "America/Los_Angeles"
+  announce_hourly: false
+  format_24h: false
